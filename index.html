@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ôn tập An toàn thông tin &amp; Mật mã</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1c2430;--mu:#657080;--bd:#d9dee6;--ac:#2f5bea;--ok:#177a43;--okb:#e0f5e8;--no:#b3261e;--nob:#fde8e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b212a;--tx:#e8ecf2;--mu:#98a3b3;--bd:#2d3644;--ac:#7c9bff;--ok:#5fd394;--okb:#16372a;--no:#ff8a80;--nob:#3d1d1b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12161c;--card:#1b212a;--tx:#e8ecf2;--mu:#98a3b3;--bd:#2d3644;--ac:#7c9bff;--ok:#5fd394;--okb:#16372a;--no:#ff8a80;--nob:#3d1d1b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.3rem;margin:8px 0 12px}
+nav{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:8px 14px}
+button.on,button.pri{background:var(--ac);border-color:var(--ac);color:#fff}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px}
+.q{font-weight:600;margin-bottom:10px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px}
+.opt.ok{background:var(--okb);border-color:var(--ok);color:var(--ok)}
+.opt.no{background:var(--nob);border-color:var(--no);color:var(--no)}
+.mu{color:var(--mu);font-size:.9rem}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+input,select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);width:100%}
+.bar{height:6px;background:var(--bd);border-radius:6px;overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;background:var(--ac)}
+.big{font-size:2rem;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+<h1>Ôn tập An toàn thông tin &amp; Mật mã</h1>
+<button> <a href="lisud.htm">lịch sử đảng</a> </button>
+<nav id="nav"></nav>
+<div id="app"></div>
+</main>
+<script>
+const raw=`Giải mã là gì?|Biến đổi thông tin không đọc được thành dạng đọc được|Tấn công hệ mật mã để tìm bản rõ và khóa bí mật|Biến đổi thông tin đọc được thành dạng không đọc được|Biến đổi thông tin không nhìn được thành dạng nhìn được
+Phá mã là gì?|Quá trình tấn công hệ mật mã để tìm bản rõ hoặc khóa bí mật|Quá trình thực hiện giải mã hợp lệ|Biến đổi thông tin không đọc được thành dạng đọc được|Biến đổi thông tin đọc được thành dạng không đọc được
+Để bảo đảm an toàn thông tin, nên thực hiện biện pháp nào?|Kết hợp mã hóa, tường lửa và phân quyền truy cập|Chỉ sử dụng phương pháp mã hóa|Chỉ sử dụng tường lửa|Chỉ phân quyền truy cập thông tin
+Trong hệ mã Vigenère, mỗi khối bản rõ được mã hóa có độ dài bao nhiêu ký tự?|m ký tự (m là độ dài khóa)|1 ký tự|2 ký tự|26 ký tự
+Bản rõ “viet”, khóa “USE” (Vigenère) cho bản mã nào?|pain|viet|page|pail
+Bản rõ “hoa”, khóa “BYE” (Vigenère) cho bản mã nào?|IME|IMJ|IKD|IOK
+Bản rõ “sach”, khóa “READ” (Vigenère) cho bản mã nào?|JECK|GHKN|OPJF|JEKC
+Bản rõ “nhai”, khóa “HOA” (Vigenère) cho bản mã nào?|UVAP|UVAK|UVBP|UVAL
+Khi áp dụng khóa “USE” cho bản rõ dài hơn 3 ký tự, cách ghép khóa nào đúng?|Lặp khóa thành chuỗi USEUSEUSE… ghép lần lượt với bản rõ|Dùng khóa một lần rồi bỏ các ký tự còn lại|Đảo khóa thành ESU trước mỗi lần ghép|Ghép toàn bộ bản rõ với duy nhất chữ U
+Giải mã bản mã “ICVM” với khóa “GO” (Vigenère) được bản rõ nào?|copy|page|pase|cont
+Giải mã bản mã “RXVA” với khóa “KP” (Vigenère) được bản rõ nào?|hill|bill|sice|viet
+Giải mã bản mã “JZOP” với khóa “CL” (Vigenère) được bản rõ nào?|home|move|mail|name
+Giải mã bản mã “PMGQ” với khóa “AM” (Vigenère) được bản rõ nào?|page|sage|seft|stef
+Giải mã bản mã “OEUH” với khóa “HE” (Vigenère) được bản rõ nào?|hand|hend|band|name
+Mật mã Vigenère, từ khóa “HELLO”, bản mã “PROTO” ứng với bản rõ nào?|INDIA|SANFOUNDRY|WORLD|AMERICA
+Mã hóa “SANFOUNDRY” bằng Vigenère, khóa lặp “HELLO” (A=0…Z=25) ra bản mã nào?|ZEYQCBROCM|ZFYQDBROCN|RANFOUNDRY|HELLOSANFOU
+Bảng Vigenère có cấu trúc nào?|26 hàng và 26 cột|26 hàng và 1 cột|1 hàng và 26 cột|27 hàng và 27 cột
+Mã hóa trong mật mã Vigenère được thực hiện bằng phương pháp nào?|Hình vuông Vigenère|Công thức Vigenère|Chu trình Vigenère|Bổ sung Vigenère
+Mã hóa trong mật mã Autokey được thực hiện bằng phương pháp nào?|Bảng Vigenère|Một bảng 5 × 5|Một bảng 13 × 2|Một bảng 6 × 6
+Công thức mã hóa của hệ mã Hill (x: vectơ bản rõ, k: ma trận khóa) là?|y = kx|y = x + k|y = x − k|y = k + x
+Khi mã hóa các cặp chữ cái bằng hệ mã Hill với bảng chữ cái 26 chữ, phép tính theo môđun nào?|Môđun 26|Môđun 10|Môđun 13|Môđun 52
+Trong bài toán Hill 2×2, khóa k có dạng nào?|Ma trận 2×2|Ma trận 1×2|Ma trận 2×1|Ma trận 3×3
+Mã hóa bản rõ hai chữ cái bằng Hill 2×2 cho kết quả dạng nào?|Một cặp chữ cái|Một chữ cái đơn|Một dãy ba chữ cái|Một số nguyên đơn
+Trong hàm mã Hill y = Kx, x biểu diễn thành phần nào?|Vectơ bản rõ|Vectơ bản mã|Ma trận khóa|Số dư modulo
+Với A=0, B=1,…, Z=25, bản rõ “la” biểu diễn thành vectơ nào?|(11, 0)ᵀ|(0, 11)ᵀ|(10, 1)ᵀ|(1, 10)ᵀ
+Nếu bản rõ là “SECRET”, ma trận khóa trong mật mã Hill có kích thước bao nhiêu?|6 × 6|1 × 6|5 × 1|6 × 1
+Mã hóa trong mật mã Hill được thực hiện bằng phương pháp nào?|Phép nhân ma trận|Một bảng 5 × 5|Tra bảng Vigenère|Nghịch đảo ma trận
+Mật mã Hill thuộc lĩnh vực toán học nào?|Đại số ma trận|Phép toán tích phân|Phép toán vi phân|Phương trình vi phân
+Để giải mã được trong mật mã Hill, ma trận khóa phải có tính chất nào?|Là ma trận nghịch đảo được (khả nghịch)|Là ma trận không thể đảo ngược|Là ma trận vuông bất kỳ|Là ma trận không vuông
+Mật mã Hill là một ví dụ về loại mật mã nào?|Mật mã thay thế|Mật mã đơn ký tự|Mật mã chuyển vị|Mật mã cộng
+Mật mã nào không thuộc loại mật mã đa chữ cái?|Mật mã Caesar|Mật mã Hill|Mật mã OTP|Mật mã nhãn
+Mật mã nào khó phá nhất bằng phân tích tần suất (Vigenère, Hill, Caesar, Affine)?|Mật mã Hill|Mật mã Vigenère|Mật mã Caesar|Mật mã Affine
+Mật mã nào khó phá nhất bằng phân tích tần suất (Vigenère, Autokey, Playfair, Caesar)?|Mật mã Playfair|Mật mã Vigenère|Mật mã Autokey|Mật mã Caesar
+Mật mã nào là mật mã thay thế đa ký tự (digraph) đầu tiên?|Mật mã Playfair|Mật mã Autokey|Mật mã Hill|Mật mã OTP
+Mật mã Playfair là ví dụ về loại mật mã nào?|Mật mã đa ký tự|Mật mã đơn ký tự|Mật mã chuyển vị|Mật mã cộng
+Mật mã Vigenère là ví dụ về loại mật mã nào?|Mật mã đa ký tự|Mật mã đơn ký tự|Mật mã chuyển vị|Mật mã cộng
+Mật mã thay thế đa hình (polygraphic substitution) được hiểu là gì?|Thay thế các ký tự theo từng khối chữ cái|Thay thế bằng nhiều bảng chữ cái ở các vị trí khác nhau|Dùng một phép thay thế cố định cho toàn bộ bản rõ|Dùng phép chuyển vị cố định cho toàn bộ bản rõ
+Mật mã đa chữ cái (polyalphabetic) được hiểu là gì?|Dùng nhiều phép thay thế tại các vị trí khác nhau|Dùng một phép thay thế cố định cho toàn thông báo|Dùng nhiều phép chuyển vị tại các vị trí khác nhau|Dùng một phép chuyển vị cố định cho thông điệp
+Mật mã nào là mật mã đa hình đầu tiên có thể hoạt động trên nhiều hơn ba chữ cái cùng lúc?|Mật mã Hill, dùng phép biến đổi ma trận|Mật mã Autokey|Mật mã One-time pad|Mật mã Playfair
+Playfair: hai chữ cái của cặp không cùng hàng hoặc cột thì mã hóa thế nào?|Dùng hai đỉnh còn lại của hình chữ nhật|Thay mỗi chữ bằng chữ ngay bên dưới|Thay mỗi chữ bằng chữ ngay bên phải|Giữ nguyên vị trí của cả hai chữ
+Playfair: nếu hai chữ cái trong cặp giống hệt nhau thì làm gì?|Thêm một ký tự quy ước vào giữa cặp chữ|Loại bỏ cặp chữ khỏi bản rõ|Thay một chữ trong cặp bằng chữ khác|Giữ nguyên cặp chữ và mã hóa bình thường
+Playfair: hai chữ cái cùng một hàng được thay thế thế nào?|Bằng chữ ngay bên phải trong cùng hàng|Bằng chữ ngay bên dưới trong cùng cột|Bằng chữ ở góc trên bên trái|Bằng chữ ở góc dưới bên phải
+Playfair: hai chữ cái cùng một cột được thay thế thế nào?|Bằng chữ ngay bên dưới trong cùng cột|Bằng chữ ngay bên phải trong cùng hàng|Bằng chữ ở góc trên bên trái|Bằng chữ ở góc dưới bên phải
+Tên gọi khác của mật mã Playfair là gì?|Mật mã Wheatstone Playfair|Mật mã Wadsworth|Hình chữ nhật Playfair|Mật mã Wheatstone
+Mật mã nào cho bản rõ và bản mã có cùng số lượng chữ cái?|Mật mã Vigenère|Mật mã affine|Mật mã cột|Mật mã cộng
+Playfair, từ khóa “SECRET” (i/j gộp), bản mã “BPKYFS” ứng với bản rõ nào?|DOLLAR|INDIAN|WORLD|HELLO
+Mã hóa “SANFOUNDRY” bằng Playfair với từ khóa “SECRET” (i/j gộp) ra bản mã nào?|AHQAPNPAFR|ZHQAPNPAFR|HAQAPNPAFR|QHAAPNPAFR
+Trong hệ mật mã, bản mã là gì?|Một mã bí mật được tạo ra|Một thuật toán thực hiện mã hóa|Một thuật toán tạo ra một mã bí mật|Một thuật toán thực hiện mã hóa hoặc giải mã
+Trong mật mã, khóa công khai thường được dùng để làm gì?|Mã hóa thông tin|Giải mã thông tin|Tạo chữ ký số|Mã hóa và tạo chữ ký số
+Giải thuật mã hóa DES thực hiện bao nhiêu vòng lặp?|16 vòng|6 vòng|10 vòng|8 vòng
+Khóa đưa vào DES dài 64 bit nhưng thực chất sử dụng bao nhiêu bit?|56 bit|32 bit|48 bit|64 bit
+Thuật toán AES trải qua bao nhiêu vòng lặp (theo tài liệu)?|10 vòng|4 vòng|8 vòng|16 vòng
+Thứ tự các bước trong một vòng lặp AES là?|Sub bytes → Shift rows → Mix columns → Add round key|Add round key → Sub bytes → Mix columns → Shift rows|Sub bytes → Add round key → Mix columns → Shift rows|Add round key → Mix columns → Sub bytes → Shift rows
+Nhận định nào đúng về số vòng lặp của DES và AES?|DES có 16 vòng, AES có 10 vòng|DES có 10 vòng, AES có 16 vòng|DES có 8 vòng, AES có 10 vòng|DES có 16 vòng, AES có 8 vòng
+“MD” trong “hàm băm MD5” là viết tắt của cụm từ nào?|Message Digest|Muscular Dystrophy|Missing Data|Multi Dimension
+Phát biểu nào đúng về mối quan hệ giữa DES và TDES?|TDES có thể giải mã dữ liệu đã mã hóa bằng DES|TDES không thể giải mã dữ liệu của DES|TDES chỉ dùng để băm dữ liệu của DES|TDES loại bỏ hoàn toàn khóa dùng trong DES
+Phát biểu nào đúng về độ an toàn của DES?|DES nhận khóa 64 bit nhưng thực tế dùng 56 bit|DES chỉ bị tấn công bằng phương pháp brute force|Mạch giải mã TDES không thể giải mã bản mã DES|Cả ba phát biểu trên đều đúng
+MD5 có thể được sử dụng phù hợp trong trường hợp nào?|Lưu trữ mật khẩu email|Mã hóa tin nhắn Facebook|Mã hóa thư điện tử|Mã hóa cuộc gọi trực tuyến
+MD5 không nên được sử dụng để làm việc nào?|Mã hóa tin nhắn Facebook|Mã hóa mật khẩu email|Mã hóa mật khẩu Facebook|Tạo giá trị băm dữ liệu
+Vì sao MD5 không dùng để mã hóa thông điệp trao đổi giữa hai người dùng?|MD5 không thể giải mã để khôi phục thông điệp|MD5 có chi phí triển khai cao hơn mọi thuật toán|MD5 yêu cầu quá nhiều thời gian tính toán|MD5 chỉ hoạt động với dữ liệu dạng hình ảnh
+Cần gửi thông điệp bí mật và cho phép người nhận khôi phục bản rõ. Chọn gì?|Dùng một thuật toán mã hóa như DES hoặc AES|Dùng MD5 vì có thể khôi phục bản rõ|Dùng MD5 vì không cần khóa giải mã|Dùng hàm băm thay cho mọi thuật toán mã hóa
+Tổ chức cần bảo vệ dữ liệu khi truyền, ngăn kết nối không phù hợp và hạn chế truy cập theo quyền hạn. Cách nào phù hợp nhất?|Kết hợp mã hóa, tường lửa và phân quyền|Chỉ mã hóa dữ liệu khi truyền|Chỉ dùng tường lửa lọc kết nối|Chỉ phân quyền người dùng theo nhiệm vụ
+Mối quan hệ giữa chữ ký số và chữ ký điện tử?|Chữ ký số là trường hợp riêng của chữ ký điện tử, dựa trên thuật toán mã công khai|Chữ ký điện tử là trường hợp riêng của chữ ký số, dựa trên mã đối xứng|Chữ ký số chỉ là một dãy số đặc biệt, không liên quan thuật toán mã hóa|Chữ ký điện tử luôn tạo bằng khóa bí mật và xác minh bằng khóa bí mật
+Cần chứng minh thông điệp do đúng người gửi tạo, không bị thay đổi và người gửi không thể phủ nhận. Dùng công nghệ nào?|Chữ ký số|Mã hóa đối xứng|Mã hóa MD5|Mã hóa khóa công khai
+Trong sơ đồ chữ ký số, thành phần nào đặc trưng để xác nhận một người?|Khóa bí mật|Khóa công khai|Bản mã|Bức thư
+Chứng minh một người dùng đã gửi một email thể hiện thuộc tính nào?|Tính không từ chối của người gửi|Tính bí mật của dữ liệu|Tính toàn vẹn của dữ liệu|Tính khả dụng của hệ thống
+Thuật toán mã hóa bất đối xứng nào được xem là an toàn nhất trong các lựa chọn?|RSA|SHA-2|BTC-2|ME-14
+Thuật toán bất đối xứng nào sử dụng số nguyên tố khi tạo khóa?|RSA|EFS|Quantum computing|ECC
+Chữ ký điện tử có thể cung cấp các lợi ích sau, NGOẠI TRỪ?|Xác minh người nhận thông điệp|Chứng minh tính toàn vẹn của thông điệp|Xác minh người gửi thông điệp|Thực thi tính không thể từ chối
+Nhận định nào đúng về tiêu chuẩn mật mã khóa công khai PKCS?|Được chấp nhận rộng rãi trong ngành|Chỉ được sử dụng để tạo khóa công khai|Quy định cách các thuật toán băm được tạo ra|Đã được thay thế hoàn toàn bởi PKI
+Đâu KHÔNG phải nơi khóa có thể được lưu trữ?|Trong digest|Trong token|Trên hệ thống của người dùng cục bộ|Trong chứng chỉ kỹ thuật số
+Tổ chức cần quản lý cấp, lưu trữ, xác thực chứng chỉ số cho nhiều người dùng. Thành phần nào phù hợp?|Cơ sở hạ tầng khóa công khai (PKI)|Tiêu chuẩn mật mã khóa công khai (PKCS)|Hàm băm MD5|Thuật toán mã hóa RSA
+RSA là viết tắt của cụm từ nào?|Rivest-Shamir-Adleman|Random Secure Algorithm|Robust Security Algorithm|Ronald-Samuel-Allen
+RSA được đặt theo tên các nhà nghiên cứu nào?|Rivest, Shamir, Adleman|River, Shamir, Adleman|Rivest, Shamus, Adleman|Rivest, Shamir, Adelmar
+RSA sử dụng những phép tính nào để tạo khóa công khai và khóa bí mật?|Phép cộng modulo và lũy thừa modulo|Phép cộng, phép trừ và phép lũy thừa|Công thức nhân chia trên số nguyên|Phép tính ma trận và vectơ
+Khi mã hóa bằng RSA, thông điệp gốc được chia thành các khối có kích thước thế nào?|Nhỏ hơn kích thước khóa công khai|Bằng kích thước khóa công khai|Bằng kích thước khóa bí mật|Phụ thuộc vào độ dài thông điệp gốc
+Trong RSA, vì sao e phải nguyên tố cùng nhau với φ(n)?|Để tồn tại nghịch đảo modulo tạo ra d|Để làm cho p và q bằng nhau|Để khóa công khai luôn ngắn hơn thông điệp|Để tránh phải dùng lũy thừa modulo
+Vì sao RSA được gọi là hệ mã hóa khóa công khai?|Khóa công khai dùng để mã hóa thông điệp|Khóa bí mật dùng để mã hóa thông điệp|Cả hai khóa đều công khai cho mọi người|Chỉ cần một khóa duy nhất cho mọi thao tác
+Với hai số nguyên tố lớn p và q, hàm Euler φ(n) tính thế nào?|(p − 1)(q − 1)|p / q|p × q|(p + 1)(q + 1)
+Tại sao RSA được coi là thuật toán mã hóa mạnh (theo tài liệu)?|Vì việc giải mã thông điệp trong RSA rất phức tạp|Vì RSA dùng khóa bí mật và khóa công khai|Vì RSA dùng phép toán mũ để mã hóa|Vì RSA dùng hai số nguyên tố lớn
+RSA có thể dùng để thực hiện những thao tác nào?|Cả ba: mã hóa/giải mã, ký và xác nhận chữ ký, mã hóa dữ liệu và ký số|Chỉ mã hóa và giải mã dữ liệu|Chỉ ký và xác nhận chữ ký số|Chỉ mã hóa dữ liệu và ký số
+RSA thuộc loại thuật toán nào?|Thuật toán mã hóa khóa công khai|Thuật toán mã hóa đối xứng|Thuật toán mã hóa khóa bí mật|Thuật toán băm
+RSA được sử dụng phổ biến trong giao thức mạng nào?|HTTPS|SSH|FTP|Telnet
+RSA: p = 17, q = 3, e = 5. Khóa công khai là cặp nào?|(51, 5)|(32, 5)|(17, 3)|(17, 3, 5)
+RSA: bản rõ x = 25, khóa công khai n = 221, e = 37. Bản mã y = xᵉ mod n là?|77|10|15|55
+RSA: bản mã y = 77, p = 13, q = 17, e = 37. Bản rõ là?|25|13|17|125
+RSA: bản mã y = 168, p = 13, q = 17, e = 7. Bản rõ là?|25|13|15|20
+RSA: bản mã y = 2, p = 3, q = 7, e = 5. Giải mã bằng khóa riêng được bản rõ?|11|5|7|14
+RSA: bản rõ x = 11, khóa công khai n = 21, e = 5. Bản mã là?|2|11|25|60
+RSA: bản mã y = 15, p = 3, q = 7, e = 5. Bản rõ là?|15|5|7|25
+RSA: bản rõ x = 15, khóa công khai n = 21, e = 5. Bản mã là?|15|5|7|25
+RSA: bản mã y = 20, p = 3, q = 11, e = 7. Bản rõ là?|14|10|20|35
+RSA: bản rõ x = 14, khóa công khai n = 33, e = 7. Bản mã là?|20|10|14|35
+RSA: p = 41, q = 43, e = 17, φ(n) = 1680. Số mũ bí mật d (ed ≡ 1 mod φ) là?|593|977|883|931
+RSA: p = 59, q = 61, e = 37, φ(n) = 3480. Khóa bí mật (n, d) là?|(3599, 1693)|(3599, 149)|(3639, 1693)|(3639, 149)
+Thế nào là tính bảo mật của hệ thống thông tin?|Là đặc tính của hệ thống trong đó tất cả thông tin được lưu trữ dưới dạng mật mã|Là đặc tính của hệ thống trong đó thông tin được giữ bí mật không cho ai truy xuất|Là đặc tính của hệ thống trong đó chỉ có những người dùng được cho phép mới có thể truy xuất được thông tin|Tất cả đều đúng
+Các cơ chế đảm bảo tính toàn vẹn của thông tin là gì?|Mật mã hoá toàn bộ thông tin trong hệ thống|Gồm các cơ chế ngăn chặn và cơ chế phát hiện các vi phạm về toàn vẹn thông tin|Lưu toàn bộ thông tin trong hệ thống dưới dạng nén|Tất cả các cơ chế trên
+Các nguy cơ nào sau đây có thể ảnh hưởng đến tính khả dụng của hệ thống thông tin?|Tất cả các nguy cơ trên|Thiết bị không an toàn|Các tấn công từ chối dịch vụ (DoS và DDoS)|Virus và các loại phần mềm phá hoại khác trên máy tính
+Hành vi nào sau đây ảnh hưởng đến tính bí mật của hệ thống thông tin?|Một người dùng có thể xem thông tin của các người dùng khác|Virus xóa mất các tập tin trên đĩa cứng|Mất điện thường xuyên làm hệ thống máy tính làm việc gián đoạn|Tất cả các hành vi trên
+Hành vi nào sau đây ảnh hưởng đến tính khả dụng của hệ thống thông tin?|Mất điện thường xuyên làm hệ thống máy tính làm việc gián đoạn|Một người dùng có thể xem thông tin của các người dùng khác|Virus xóa mất các tập tin trên đĩa cứng|Tất cả các hành vi trên
+Hành vi nào sau đây ảnh hưởng đến tính toàn vẹn của hệ thống thông tin?|Virus xóa mất các tập tin trên đĩa cứng|Một sinh viên sao chép bài tập của một sinh viên khác|Mất điện thường xuyên làm hệ thống máy tính làm việc gián đoạn|Một người dùng có thể xem thông tin của các người dùng khác
+Thế nào là tính khả dụng của hệ thống thông tin?|Là tính sẵn sàng của thông tin trong hệ thống cho các nhu cầu truy xuất hợp lệ|Là tính sẵn sàng của thông tin trong hệ thống cho mọi nhu cầu truy xuất|Là tính dễ sử dụng của thông tin trong hệ thống|Tất cả đều sai
+Để tìm bản rõ, người thám mã sử dụng cách nào?|Kết hợp nhiều phương pháp tấn công khác nhau|Chỉ sử dụng phương pháp giải bài toán ngược|Sử dụng khóa bí mật|Vét cạn khóa
+Chức năng chính của Virus là gì?|Sống ký sinh và lây nhiễm|Lây nhiễm và sinh sản|Tự phát triển độc lập và lây nhiễm|Sống ký sinh và sinh sản
+So sánh tốc độ mã hóa/giải mã của mật mã công khai với mật mã bí mật hiện đại (cùng độ dài bản rõ và khóa)?|Mật mã công khai chậm hơn|Tốc độ như nhau|Mật mã công khai nhanh hơn|Không so sánh được
+Thám mã là gì?|Quá trình tấn công hệ mật mã để tìm bản rõ và khóa bí mật|Quá trình biến đổi thông tin từ dạng đọc được sang dạng không đọc được|Quá trình biến đổi thông tin từ dạng không đọc được sang dạng đọc được|Giấu thông tin để không nhìn thấy
+Mã hóa là gì?|Quá trình biến đổi thông tin từ dạng đọc được sang dạng không đọc được|Quá trình tấn công hệ mật mã để tìm bản rõ và khóa bí mật|Quá trình biến đổi thông tin từ dạng không đọc được sang dạng đọc được|Giấu thông tin để không nhìn thấy
+Chọn câu SAI khi nói về các nguy cơ đối với an toàn hệ thống thông tin|Một hệ thống không kết nối vào mạng Internet thì không có các nguy cơ tấn công|Những kẻ tấn công hệ thống (attacker) có thể là con người bên trong hệ thống|Người sử dụng không được huấn luyện về an toàn hệ thống cũng là một nguy cơ|Xâm nhập hệ thống có thể xuất phát từ bên ngoài hoặc từ bên trong hệ thống
+Metasploit Framework vừa cài đặt xong nhưng mọi lệnh gõ vào đều không được thi hành. Nguyên nhân là do?|Phần mềm Anti Virus trên máy tấn công đã khóa (blocked) không cho thi hành|Không kết nối được tới máy nạn nhân|Không cài đặt công cụ Metasploit vào ổ C:|Máy nạn nhân không cho phép tấn công
+Phòng chống tấn công từ chối dịch vụ phân bố (DDoS)?|Có thể hạn chế bằng cách lập trình|Chỉ có thể dùng tường lửa|Hiện nay đã có cách phòng chống hiệu quả|Cách hiệu quả duy nhất là backup và restore
+Trojan là phương thức tấn công kiểu nào?|Điều khiển máy tính nạn nhân từ xa thông qua phần mềm cài sẵn trong máy nạn nhân|Can thiệp trực tiếp vào máy nạn nhân để lấy thông tin quan trọng|Đánh cắp dữ liệu của nạn nhân truyền trên mạng|Tấn công làm tê liệt hệ thống mạng của nạn nhân
+Virus máy tính không thể lây lan qua?|Đĩa CD|Mạng máy tính|Thẻ nhớ Flash|Lưu trữ USB
+SQL Injection là gì?|Một loại khai thác bảo mật trong đó kẻ tấn công thêm mã SQL vào hộp nhập biểu mẫu của trang Web để truy cập tài nguyên hoặc thay đổi dữ liệu|Một ngôn ngữ lập trình đa năng|Ngôn ngữ dựa trên nguyên mẫu, chạy phía máy khách trong trình duyệt để tạo trang web động|Một chương trình đố vui của Mỹ về nhiều lĩnh vực
+Có thể ngăn chặn SQL Injection bằng cách nào?|Bắt lỗi dữ liệu đầu vào của người dùng (đảm bảo người dùng không thể nhập gì ngoài những gì được cho phép)|Không sử dụng SQL nữa|Đặt mã của bạn ở chế độ công khai|Tất cả những cách trên
+Cross-site scripting (XSS) là gì?|Lỗ hổng bảo mật thường gặp trong ứng dụng Web, cho phép kẻ tấn công chèn tập lệnh phía máy khách vào các trang Web mà người dùng khác xem|Một ngôn ngữ lập trình cho phép kiểm soát một hoặc nhiều ứng dụng|Một loại ngôn ngữ script chuyên dùng để điều khiển máy tính|Tài liệu thông tin truy cập qua trình duyệt web
+Social Engineering là gì?|Kỹ thuật sai khiến mọi người thực hiện hành vi nào đó hoặc tiết lộ thông tin bí mật|Môn học kỹ thuật về thiết kế, thi công và bảo trì công trình giao thông, cầu, đập|Môn học kỹ thuật áp dụng vật lý và khoa học vật liệu để thiết kế hệ thống cơ khí|Sự điều khiển trực tiếp của con người đối với bộ gen của sinh vật
+Rootkit là gì?|Công cụ được thiết kế để qua mặt các phương pháp bảo mật máy tính|Bộ kit của các nhà sinh học dùng khi làm việc với thực vật|Tên mặc định của thư mục gốc UNIX|Máy chủ định danh cho vùng root của DNS
+Kiến trúc TCP/IP sử dụng bao nhiêu lớp?|Bốn|Bảy|Sáu|Năm
+Điều nào sau đây KHÔNG phải là tấn công tiêu đề HTTP?|Content-length|Accept-Language|Referer|Response splitting
+Ngôn ngữ đánh dấu nào được thiết kế để mang dữ liệu?|XML|ICMP|HTTP|HTML
+Kiểu tấn công nào liên quan đến việc truy cập các tệp trong các thư mục khác với thư mục gốc?|Directory traversal|SQL injection|Command injection|XML injection
+Kiểu tấn công nào sửa đổi các trường chứa các đặc tính khác nhau của dữ liệu đang được truyền đi?|HTTP header|XML manipulation|HTML packet|SQL injection
+Điều nào sau đây KHÔNG phải là tấn công DoS?|Push flood|SYN flood|Ping flood|Smurf
+Cơ sở của một cuộc tấn công SQL injection là gì?|Chèn câu lệnh SQL thông qua đầu vào người dùng chưa được lọc|Để máy chủ SQL tấn công trình duyệt web máy khách|Để hiển thị mã SQL để nó có thể được kiểm tra|Để liên kết các máy chủ SQL thành một botnet
+Hành động nào KHÔNG thể thực hiện thông qua tấn công SQL injection thành công?|Định dạng lại ổ cứng của máy chủ ứng dụng web|Hiển thị danh sách số điện thoại của khách hàng|Khám phá tên của các trường khác nhau trong bảng|Xóa bảng cơ sở dữ liệu
+Tấn công phát lại (replay attack) là gì?|Tạo bản sao truyền để sử dụng sau này|Được coi là một loại tấn công DoS|Có thể được ngăn chặn bằng cách vá trình duyệt web|Replay các cuộc tấn công nhiều lần để làm lũ máy chủ
+Tên khác của đối tượng được chia sẻ cục bộ là gì?|Flash cookie|Session cookie|Ram cookie|Secure cookie
+Plug-in trình duyệt (theo tài liệu)?|Có thể được nhúng bên trong trang web nhưng không thể thêm tiện ích|Chỉ hoạt động trên máy chủ web|Có chức năng bổ sung cho toàn bộ trình duyệt|Đã được thay thế bằng tiện ích mở rộng của trình duyệt
+Kẻ tấn công muốn tấn công kích thước tối đa của một loại số nguyên sẽ thực hiện kiểu tấn công nào?|Integer overflow|Buffer overflow|Real number|Heap size
+Kẻ tấn công sử dụng tràn bộ đệm (buffer overflow) để làm gì?|Trỏ đến một khu vực khác trong bộ nhớ dữ liệu chứa mã phần mềm độc hại của kẻ tấn công|Xóa tập tin chữ ký tràn bộ đệm|Làm hỏng nhân để máy tính không thể khởi động lại|Đặt virus vào nhân (kernel)
+Điều gì là duy nhất về tấn công XSS so với các cuộc tấn công injection khác?|XSS không tấn công máy chủ ứng dụng web để ăn cắp hoặc làm hỏng thông tin của nó|Mã SQL được sử dụng trong tấn công XSS|XSS yêu cầu sử dụng trình duyệt|Tấn công XSS hiếm khi được sử dụng nữa
+Cookie không được tạo bởi trang web đang được xem là gì?|Cookie của bên thứ ba|Cookie chính chủ|Cookie của bên thứ hai|Cookie của bên thứ tư
+Kẻ tấn công lợi dụng truy cập trái phép được xây dựng qua ba hệ thống tin tưởng lẫn nhau. Đó là loại tấn công nào?|Transitive|Privilege rights|Heap spray|Vertical escalation
+Điều nào KHÔNG phải là lý do việc bảo mật ứng dụng web phía máy chủ là khó?|Các bộ vi xử lý trên máy khách nhỏ hơn trên các máy chủ web nên dễ bảo vệ hơn|Thiết bị bảo mật mạng truyền thống không thể luôn chặn các cuộc tấn công ứng dụng web|Nhiều cuộc tấn công ứng dụng web khai thác lỗ hổng chưa biết trước đó|Ứng dụng web phía máy chủ động chấp nhận đầu vào người dùng có thể chứa mã độc
+Vì sao các thiết bị bảo mật mạng truyền thống không chặn được các cuộc tấn công ứng dụng web?|Chúng bỏ qua nội dung lưu lượng HTTP, là phương tiện tấn công ứng dụng web|Các cuộc tấn công ứng dụng web dùng trình duyệt không thể điều khiển trên máy cục bộ|Chúng không thể ngăn chặn các cuộc tấn công từ tài nguyên web|Tính phức tạp của TCP/IP cho phép quá nhiều lần ping bị chặn
+Trojan Horse là gì (theo tài liệu)?|Một chương trình độc hại lấy cắp tên người dùng và mật khẩu của bạn|Gây hại như mã giả mạo hoặc thay thế mã hợp pháp|Người dùng trái phép truy cập cơ sở dữ liệu người dùng và thêm mình vào|Máy chủ hy sinh để ghi nhận và giám sát các hoạt động hacking
+Khi hacker cố gắng tấn công một máy chủ qua Internet, đó là loại tấn công nào?|Tấn công từ xa|Tấn công truy cập vật lý|Truy cập địa phương|Tấn công nội bộ
+Kỹ thuật tấn công phổ biến trên Web là gì (theo tài liệu)?|Từ chối dịch vụ (DoS)|Chiếm hữu phiên làm việc|Tràn bộ đệm|Chèn câu truy vấn SQL`;
+const Q=raw.trim().split("\n").map(l=>{const p=l.split("|");return{q:p[0],o:p.slice(1)}});
+const L="ABCD";
+const app=document.getElementById("app"),nav=document.getElementById("nav");
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const mk=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const prep=q=>({q:q.q,o:sh(q.o.map((t,i)=>({t,c:i===0})))});
+let tab="study";
+function tabs(){nav.innerHTML="";[["study","Ôn tập"],["test","Làm đề"],["list","Tra cứu"]].forEach(([k,n])=>{const b=mk("button",tab===k?"on":"",n);b.onclick=()=>{tab=k;go()};nav.appendChild(b)})}
+function go(){tabs();app.innerHTML="";({study,test,list})[tab]()}
+function study(){
+  const items=sh(Q).map(prep);let i=0,right=0,done=0;
+  const bar=mk("div","bar"),fill=mk("i");bar.appendChild(fill);
+  const box=mk("div");app.append(bar,box);
+  function show(){
+    box.innerHTML="";fill.style.width=(i/items.length*100)+"%";
+    if(i>=items.length){const c=mk("div","card");c.append(mk("div","big",right+" / "+items.length),mk("p","mu","Số câu đúng ngay lần đầu chọn."));const b=mk("button","pri","Học lại từ đầu");b.onclick=go;c.appendChild(b);box.appendChild(c);return}
+    const it=items[i],c=mk("div","card");let locked=false;
+    c.appendChild(mk("div","mu","Câu "+(i+1)+"/"+items.length));
+    c.appendChild(mk("div","q",it.q));
+    const bs=it.o.map((o,k)=>{const b=mk("button","opt",L[k]+". "+o.t);b.onclick=()=>{if(locked)return;locked=true;if(o.c)right++;bs.forEach((x,j)=>{if(it.o[j].c)x.classList.add("ok");else if(x===b)x.classList.add("no")});nx.style.display=""};c.appendChild(b);return b});
+    const nx=mk("button","pri",i+1<items.length?"Câu tiếp →":"Xem kết quả");nx.style.display="none";nx.onclick=()=>{i++;show()};
+    c.appendChild(nx);box.appendChild(c);
+  }
+  show();
+}
+function test(){
+  const c=mk("div","card");
+  c.appendChild(mk("div","q","Chọn số câu cho đề thi"));
+  const s=document.createElement("select");[20,30,40,Q.length].forEach(n=>{const o=mk("option","",n===Q.length?"Tất cả ("+n+" câu)":n+" câu");o.value=n;s.appendChild(o)});
+  const b=mk("button","pri","Bắt đầu");b.style.marginTop="12px";b.onclick=()=>run(+s.value);
+  c.append(s,b);app.appendChild(c);
+}
+function run(n){
+  app.innerHTML="";
+  const items=sh(Q).slice(0,n).map(prep);const sel=new Array(n).fill(-1);
+  items.forEach((it,i)=>{
+    const c=mk("div","card");c.appendChild(mk("div","q",(i+1)+". "+it.q));
+    const bs=it.o.map((o,k)=>{const b=mk("button","opt",L[k]+". "+o.t);b.onclick=()=>{sel[i]=k;bs.forEach(x=>x.classList.remove("on"));b.classList.add("on")};c.appendChild(b);return b});
+    it.bs=bs;it.c=c;app.appendChild(c);
+  });
+  const sub=mk("button","pri","Nộp bài");
+  sub.onclick=()=>{
+    let r=0;
+    items.forEach((it,i)=>{it.bs.forEach((b,k)=>{b.onclick=null;b.classList.remove("on");if(it.o[k].c)b.classList.add("ok");else if(sel[i]===k)b.classList.add("no")});if(sel[i]>=0&&it.o[sel[i]].c)r++});
+    sub.remove();
+    const res=mk("div","card");
+    res.append(mk("div","big",(r/n*10).toFixed(2)+" / 10"),mk("p","mu","Đúng "+r+"/"+n+" câu. Câu xanh là đáp án đúng, câu đỏ là lựa chọn sai của bạn."));
+    const again=mk("button","pri","Làm đề mới");again.onclick=go;res.appendChild(again);
+    app.prepend(res);window.scrollTo(0,0);
+  };
+  app.appendChild(sub);
+}
+function list(){
+  const f=document.createElement("input");f.placeholder="Tìm câu hỏi hoặc đáp án…";app.appendChild(f);
+  f.style.marginBottom="12px";
+  const box=mk("div");app.appendChild(box);
+  function draw(){
+    box.innerHTML="";const k=f.value.trim().toLowerCase();
+    Q.forEach((q,i)=>{
+      if(k&&!(q.q+" "+q.o.join(" ")).toLowerCase().includes(k))return;
+      const c=mk("div","card");c.appendChild(mk("div","q",(i+1)+". "+q.q));
+      q.o.forEach((t,j)=>c.appendChild(mk("div",j===0?"opt ok":"mu",(j===0?"✓ ":"• ")+t)));
+      box.appendChild(c);
+    });
+  }
+  f.oninput=draw;draw();
+}
+go();
+</script>
+</body>
+</html>
